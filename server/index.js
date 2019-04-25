@@ -23,7 +23,7 @@ app.use(
   session({
     secret: SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24
     }
@@ -31,5 +31,7 @@ app.use(
 );
 
 app.post("/auth/signup", authController.signup);
+app.post("/auth/login", authController.login);
+app.get("/auth/me", authController.me);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
